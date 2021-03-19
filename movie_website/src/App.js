@@ -1,11 +1,12 @@
-import './App.css';
+import React, {useState, useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
-import React, {useState, useEffect} from 'react'
-import MovieList from "/Users/richeyjay/Desktop/React_Movie_Website/movie_website/src/components/MovieList.js"
+import MovieList from './components/MovieList'
+import MovieListHeading from './components/MovieListHeading';
 
 const App = () => {
   const [movies, setMovies] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
 
 const getMovieRequest = async () => {
 
@@ -22,6 +23,9 @@ useEffect(() =>{
 
   return (
     <div className='container-fluid movie-app'>
+      <div className='row'>
+        <MovieListHeading heading='Movies'/>
+      </div>
       <div className='row'>
         <MovieList movies={movies}/>
       </div>
