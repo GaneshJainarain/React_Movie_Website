@@ -33,6 +33,12 @@ const addFavoriteMovie = (movie) => {
   setFavorites(newFavoriteList);
 }
 
+const removeFavoriteMovie = (movie) => {
+  const newFavoriteList = favorites.filter(
+    (favorite) => favorite.imdbID !== movie.imdbID
+  );
+}
+
   return (
     <div className='container-fluid movie-app'>
       <div className='row d-flex align-items-center mt-4 mb-4'>
