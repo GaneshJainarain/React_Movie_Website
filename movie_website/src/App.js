@@ -28,6 +28,10 @@ useEffect(() =>{
   getMovieRequest(searchValue);
 }, [searchValue]);
 
+const saveToLocalStorage = (items) => {
+  localStorage.setItem('react-movie-app-favorites')
+}
+
 const addFavoriteMovie = (movie) => {
   const newFavoriteList = [...favorites, movie];
   setFavorites(newFavoriteList);
@@ -37,6 +41,8 @@ const removeFavoriteMovie = (movie) => {
   const newFavoriteList = favorites.filter(
     (favorite) => favorite.imdbID !== movie.imdbID
   );
+  setFavorites(newFavoriteList);
+  saveToLocalStorage(newFavoriteList)
 }
 
   return (
@@ -58,7 +64,7 @@ const removeFavoriteMovie = (movie) => {
       <div className='row'>
         <MovieList 
           movies={favorites} 
-          handleFavoritesClick={addFavoriteMovie} 
+          handleFavoritesClick={removeFavoriteMovie} 
           favoriteComponent={RemoveFavorites}
         />
       </div>
